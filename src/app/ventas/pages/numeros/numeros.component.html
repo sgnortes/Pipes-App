@@ -1,0 +1,31 @@
+<div class="text-layout">
+  <h1>Pipes de números, dinero y porcentajes</h1>
+  <p>Pipes incluídos en Angular - usualmente en el Common Module.</p>
+  <p>
+    A continuación mostraremos algunos ejemplos de valores de entrada y salida
+    en función del pipe escogido:
+  </p>
+</div>
+
+<div class="p-grid">
+  <div class="p-col-4">
+    <p-card header="number" subheader="permite formatear numeros">
+      pipe usado: <strong>numero | number: "1.2-2"</strong> <br />
+      ejemplo resultado: <strong>{{ ventasNetas | number: "1.2-2" }}</strong>
+    </p-card>
+  </div>
+  <div class="p-col-4">
+    <p-card header="currency" subheader="permite formatear dinero">
+      pipe usado: <strong>numero | currency: "EUR":true</strong> <br />
+      ejemplo resultado:
+      <strong>{{ ventasNetas | currency: "EUR":true }}</strong>
+    </p-card>
+  </div>
+  <div class="p-col-4">
+    <p-card header="percent" subheader="permite formatear porcentajes">
+      pipe usado: <strong>numero | percent: "2.2-2"</strong> <br />
+      ejemplo resultado:
+      <strong>{{ porcentaje | percent: "2.2-2" }}</strong>
+    </p-card>
+  </div>
+</div>

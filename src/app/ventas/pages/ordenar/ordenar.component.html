@@ -1,0 +1,104 @@
+<div class="text-layout">
+  <h1>Pipes personalizados</h1>
+  <p>Pestaña donde mostraremos los pipes creados por nosotros.</p>
+  <div class="p-col-12">
+    <p-card header="Tabla que hace uso de pipes personalizados">
+      <p>
+        En la siguiente tabla se han creado los siguientes pipes personalizados:
+      </p>
+      <ul>
+        <li>
+          <strong>Cambio de tamaño de fuente: </strong>hemos replicado el pipe
+          "uppercase" de Angular para transformar los textos a mayúsculas.
+        </li>
+        <li>
+          <strong>Pipes para ordenar elementos de la tabla: </strong>se ha
+          creado un pipe para ordenar los elementos de cada columna.
+        </li>
+      </ul>
+      <br />
+      <br />
+      <p-toolbar>
+        <div class="p-toolbar-group-left"></div>
+
+        <div class="p-toolbar-group-right">
+          <p-button
+            label="Cambiar tamaño text"
+            (onClick)="cambiarTamano()"
+            class="p-mr-1"
+          ></p-button>
+          <p-button
+            icon="pi pi-sort"
+            label="Por nombre"
+            (onClick)="cambiarOrden('nombre')"
+            class="p-mr-1"
+          ></p-button>
+          <p-button
+            icon="pi pi-sort"
+            label="Vuela"
+            (onClick)="cambiarOrden('vuela')"
+            class="p-mr-1 p-button-success"
+          ></p-button>
+          <p-button
+            icon="pi pi-sort"
+            label="Por color"
+            (onClick)="cambiarOrden('color')"
+            class="p-mr-1 p-button-success"
+          ></p-button>
+        </div>
+      </p-toolbar>
+      <p-table [value]="heroes | ordenar: ordenarPor" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Vuela</th>
+            <th>Código color</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-heroe>
+          <tr>
+            <td>{{ heroe.nombre | mayusculas: isInMayusculas }}</td>
+            <td>{{ heroe.vuela | vuela | mayusculas: isInMayusculas }}</td>
+            <td>{{ heroe.color }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+
+  <div class="p-col-12">
+    <p-card header="Tabla con opciones de ordenación PrimeNG">
+      <p>
+        Aquí hemos aplicado ordenación a la tabla mediante las opciones que
+        proporciona PrimeNG:
+      </p>
+      <ul>
+        <li>Aplicar ordenación usando la propiedad pSortableColumn</li>
+      </ul>
+      <br />
+      <br />
+      <p-table [value]="heroes" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="nombre" style="width: 20%">
+              Nombre<p-sortIcon field="nombre"></p-sortIcon>
+            </th>
+            <th pSortableColumn="vuela" style="width: 20%">
+              Vuela <p-sortIcon field="vuela"></p-sortIcon>
+            </th>
+            <th pSortableColumn="color" style="width: 20%">
+              Color <p-sortIcon field="color"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-heroe>
+          <tr>
+            <td>{{ heroe.nombre | mayusculas: isInMayusculas }}</td>
+            <td>{{ heroe.vuela | vuela | mayusculas: isInMayusculas }}</td>
+            <td>{{ heroe.color }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>
